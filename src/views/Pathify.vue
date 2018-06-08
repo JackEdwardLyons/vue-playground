@@ -28,29 +28,29 @@
 </template>
 
 <script>
-import { get, sync, commit } from 'vuex-pathify'
+import { get, sync } from 'vuex-pathify'
 export default {
   computed: {
     // single property
-    module: get('module'),
+    module: get('pathifyModule'),
 
     // function getter
-    getter: get('module/substr'),
+    getter: get('pathifyModule/substr'),
 
     // nested property syntax
-    sub: sync('module/object@value'),
-    nested: sync('module/object@a.b.c'),
+    sub: sync('pathifyModule/object@value'),
+    nested: sync('pathifyModule/object@a.b.c'),
 
     // array syntax
-    ...sync('module', [
-        'value',
-        'string'
+    ...sync('pathifyModule', [
+      'value',
+      'string'
     ]),
 
     // object syntax
-    ...get('module', {
-        altValue: 'value',
-        altString: 'string'
+    ...get('pathifyModule', {
+      altValue: 'value',
+      altString: 'string'
     })
   }
 }
