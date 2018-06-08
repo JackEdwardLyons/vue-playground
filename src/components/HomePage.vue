@@ -6,18 +6,19 @@
       It's a way for me to further develop my Vue skills and share my code as I go.
     </p>
     <h3>Here's what I've been working on:</h3>
-      <ul>
-        <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank">babel</a></li>
-        <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank">eslint</a></li>
-        <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank">unit-jest</a></li>
-        <li><a href="https://davestewart.github.io/vuex-pathify/#/setup/install" target="_blank">vuex-pathify</a></li>
-        <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-      </ul>
+    <ul>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank">babel</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank">eslint</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank">unit-jest</a></li>
+      <li><router-link to="/pathify">Pathify</router-link></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
+    </ul>
+    
   </div>
 </template>
 
 <script>
-import { sync } from 'vuex-pathify'
+import { get, sync, commit } from 'vuex-pathify'
 export default {
   name: 'Home',
   props: {
@@ -25,10 +26,7 @@ export default {
   },
   computed: {
     // The sync helper creates two-way bindings for store data and mutations.
-    welcomeMsg: sync('welcomeMsg')
-    // message () {
-    //   return this.$store.state.welcomeMsg
-    // }
+    welcomeMsg: sync('welcomeMsg'),
   }
 };
 </script>

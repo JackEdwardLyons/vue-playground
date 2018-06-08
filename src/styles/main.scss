@@ -1,0 +1,9 @@
+// flexbox styles
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .col {
+        min-width: 400px;
+    }
+}

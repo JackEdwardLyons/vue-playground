@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import pathify, { make } from 'vuex-pathify'
+import module from './modules/module'
+
 Vue.use(Vuex)
 
 const state = {
-  welcomeMsg: 'Welcome to my Vue.js Playground'
+  welcomeMsg: 'Welcome to my Vue Playground'
 }
 
 // You don't even need getters, pathify will use the store data directly!
@@ -18,5 +20,7 @@ export default new Vuex.Store({
   plugins: [pathify.plugin],
   state,
   mutations,
-  actions: {}
+  modules: {
+    module
+  }
 })
