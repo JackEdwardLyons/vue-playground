@@ -12,7 +12,7 @@
     </p>
     <p>
       For the past 12 months I have really taken a liking to Vue js - It's clean, simple to write and incredibly
-      powerful. 
+      powerful.
     </p>
     <p>
       I'm going to use this page to explore all the latest new libraries, tools and features of the
@@ -22,9 +22,7 @@
 </template>
 
 <script>
-export default {
-  
-}
+export default {}
 </script>
 
 <style>
