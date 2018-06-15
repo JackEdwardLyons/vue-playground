@@ -7,3 +7,35 @@
         min-width: 400px;
     }
 }
+
+// main styles
+.container {
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+h3 {
+    margin: 40px 0 0;
+  }
+  .box-list {
+    list-style-type: none;
+    padding: 0;
+    li {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 2em;
+      border: 1px solid #ccc;
+      min-width: 250px;
+      margin: 2em;
+      transition: .3s ease;
+      &:hover {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+  }
+  a {
+    color: #42b983;
+  }

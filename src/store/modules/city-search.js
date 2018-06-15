@@ -27,10 +27,17 @@ const mutations = {
 
 const actions = {
   loadCities ({ commit }) {
-    const url = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json'
-    axios.get(url)
-      .then(res => commit('SET_CITIES', res.data))
-      .catch(e => console.log(e))
+    const cities = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json'
+    axios.get(cities).then(res => {
+      commit('SET_CITIES', res.data)
+    }).catch(e => console.log(e))
+  },
+  loadCityImag ({ commit }) {
+    // load a city image if one exists in the API,
+    // unfortunately not every city image is available with the API below :()
+    // const cityImages = `https://api.teleport.org/api/urban_areas/`
+    // let cityLinks = res.data.map(link => `${cityImages}slug:${link.city.toLowerCase().replace(' ', '-')}/images`)
+    // return axios.all(cityLinks.map(l => axios.get(l)))
   }
 }
 
