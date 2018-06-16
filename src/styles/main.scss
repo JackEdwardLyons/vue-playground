@@ -4,7 +4,8 @@
     flex-direction: row;
     justify-content: space-around;
     .col {
-        min-width: 400px;
+        // min-width: 400px;
+        flex: 1;
     }
 }
 
@@ -38,4 +39,13 @@ h3 {
   }
   a {
     color: #42b983;
+  }
+  hr {
+    width: 50%;
+    margin: 1em auto;
+    border: 1px solid #efefef;
+  }
+  .basic-list {
+    list-style-type: none;
+    padding: 0;
   }

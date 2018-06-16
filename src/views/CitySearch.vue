@@ -1,16 +1,16 @@
 <template>
     <div>
-        <CityList />
+        <CityListView />
     </div>
 </template>
 
 <script>
-import CityList from '@/components/city_search/CityList.vue'
+import Index from '@/components/city_search/Index.vue'
 
 export default {
   name: 'city-search',
   components: {
-    CityList
+    CityListView: Index
   }
 }
 </script>

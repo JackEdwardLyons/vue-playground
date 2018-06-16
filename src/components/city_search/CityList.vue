@@ -1,35 +1,19 @@
 <template>
-    <section>
-        <h1>City Search App</h1>
+  <div>
+    <Loading v-if="!loadingComplete" />
+    <ul class="box-list" v-else>
+      <li v-for="city in cities" :key="city.rank">
+        {{ city.city }}
         <hr>
-        <ul class="flex alphabet-index basic-list">
-          <li v-for ="letter in alphabet" :key="letter">
-            {{ letter }}
-          </li>
-        </ul>
-        <hr>
-        <div class="filter-options">
-          <vue-slider v-model="sliderValue" :max="1000" v-bind="options"></vue-slider>
-          Filter options to go here
-          1. sort by population <br>
-          2. sort by rank <br>
-          3. name Search <br>
-          4. sliding scale ( population / rank ) -- if 'filter by pop is selected, then change to population slider' <br>
-          5. slider needs to be dynamic based on what cities are available.
-
+        <div class="stats-card">
+          <p>Rank: {{ city.rank }}</p>
+          <p>State: {{ city.state }}</p>
+          <p>Population: {{ numberWithCommas(city.population) }}</p>
         </div>
-        <ul class="box-list">
-          <li v-for="city in cities" :key="city.rank">
-            {{ city.city }}
-            <hr>
-            <div class="stats-card">
-              <p>Rank: {{ city.rank }}</p>
-              <p>State: {{ city.state }}</p>
-              <p>Population: {{ numberWithCommas(city.population) }}</p>
-            </div>
-          </li>
-        </ul>
-    </section>
+      </li>
+    </ul>
+    <p class="bold" v-if="!cities.length && loadingComplete">No results available :(</p>
+  </div>
 </template>
 
 <script>
@@ -42,21 +26,15 @@
  * - Lazy load 50 at a time ? load more on scroll ....
 */
 
-import { get } from 'vuex-pathify'
-import { rangeSlider } from '../../mixins/rangeSlider.js'
-
+import { sync } from 'vuex-pathify'
+import Loading from '@/components/utils/Loading'
 export default {
-  mixins: [ rangeSlider ],
-  data () {
-    return {
-      sliderValue: [0, 500]
-    }
+  components: {
+    Loading
   },
   computed: {
-    cities: get('citiesModule/cities'),
-    alphabet () {
-      return 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('')
-    }
+    cities: sync('citiesModule/filteredCities'),
+    loadingComplete: sync('citiesModule/loadingComplete')
   },
   methods: {
     numberWithCommas (x) {
@@ -69,16 +47,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-hr {
-  width: 50%;
-  margin: 1em auto;
-  border: 1px solid #efefef;
-}
 .stats-card {
   text-align: left;
-}
-.alphabet-index {
-  font-weight: bold;
 }
 .basic-list {
   list-style-type: none;
