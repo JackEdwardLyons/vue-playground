@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 export default {
   computed: {
     alphabet () {
@@ -25,8 +26,11 @@ export default {
     },
     highlightLetter (index) {
       const availableLetters = this.$refs.letter
-      availableLetters.forEach((l) => l.classList.remove('clicked-letter'))
+      this.removeHightlights(availableLetters)
       availableLetters[index].classList.add('clicked-letter')
+    },
+    removeHightlights (availableLetters) {
+      availableLetters.forEach((letter) => letter.classList.remove('clicked-letter'))
     }
   }
 }

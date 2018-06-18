@@ -14,7 +14,7 @@ export const rangeSlider = {
         disabled: false,
         show: true,
         tooltip: 'always',
-        tooltipDir: ['bottom', 'top'],
+        tooltipDir: ['bottom', 'bottom'],
         piecewise: true,
         style: {
           'marginBottom': '30px',

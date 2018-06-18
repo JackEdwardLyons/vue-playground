@@ -28,18 +28,16 @@
 
 import { sync } from 'vuex-pathify'
 import Loading from '@/components/utils/Loading'
+import { numberFunctions } from '../../mixins/numbers.js'
+
 export default {
+  mixins: [ numberFunctions ],
   components: {
     Loading
   },
   computed: {
     cities: sync('citiesModule/filteredCities'),
     loadingComplete: sync('citiesModule/loadingComplete')
-  },
-  methods: {
-    numberWithCommas (x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    }
   },
   async mounted () {
     await this.$store.dispatch('citiesModule/loadCities')

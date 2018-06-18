@@ -1,22 +1,21 @@
 <template>
-    <section class="">
+    <section>
 
-      <div class="">
+      <article class="">
         <h1>City Search App</h1>
         <p>{{ cityCount }} Cities available</p>
-        <hr>
-        <AlphabetIndex />
-      </div>
+      </article>
 
       <hr>
 
-      <div class="">
-        <FilterOptions />
-      </div>
+      <AlphabetIndex />
 
-      <div class="">
-        <CityList />
-      </div>
+      <article @click="removeLetterHighlight">
+        <h2>Filter Cities</h2>
+        <FilterOptions />
+      </article>
+
+      <CityList />
 
     </section>
 </template>
@@ -42,7 +41,6 @@ export default {
   components: {
     FilterOptions,
     AlphabetIndex,
-    // Loading,
     CityList
   },
   data () {
@@ -50,13 +48,17 @@ export default {
       sliderValue: [0, 500]
     }
   },
+  methods: {
+    removeLetterHighlight () {
+      const availableLetters = this.$children.map(child => child.$refs.letter)[0]
+      availableLetters.forEach(letter => letter.classList.remove('clicked-letter'))
+    }
+  },
   computed: {
     cities: get('citiesModule/cities'),
     filteredCities: sync('citiesModule/filteredCities'),
     loadingComplete: sync('citiesModule/loadingComplete'),
-    cityCount () {
-      return this.filteredCities.length
-    }
+    cityCount () { return this.filteredCities.length }
   }
 }
 </script>

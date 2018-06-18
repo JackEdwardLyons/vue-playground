@@ -1,15 +1,16 @@
 <template>
     <div class="filter-options flex">
         <div class="col">
+          <h3>Rank</h3>
           <vue-slider v-model="sliderValue" :max="1000" v-bind="options"></vue-slider>
         </div>
         <div class="col">
-          <!-- Filter options to go here
-          1. sort by population <br>
-          2. sort by rank <br>
-          3. name Search <br>
-          4. sliding scale ( population / rank ) -- if 'filter by pop is selected, then change to population slider' <br>
-          5. slider needs to be dynamic based on what cities are available. Interval slider for large populations but not for rank -->
+          <h3>Population</h3>
+          <PopulationFilter />
+        </div>
+        <div class="col">
+          <h3>Name</h3>
+          <CitySearch />
         </div>
     </div>
 </template>
@@ -25,9 +26,15 @@
 */
 
 import { rangeSlider } from '../../mixins/rangeSlider.js'
+import PopulationFilter from './PopulationFilter'
+import CitySearch from './CitySearch'
 
 export default {
   mixins: [ rangeSlider ],
+  components: {
+    PopulationFilter,
+    CitySearch
+  },
   data () {
     return {
       sliderValue: [0, 500]
