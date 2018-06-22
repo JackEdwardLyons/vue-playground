@@ -12,36 +12,59 @@
           <h3>Name</h3>
           <CitySearch />
         </div>
+        <div class="col">
+          <h3>Sort</h3>
+          <span class="sort__a-z" @click="toggleAZSort">
+            {{ sortAZ }}
+            <icon-arrow-down :class="{ 'up': sortZtoA }" />
+          </span>
+        </div>
     </div>
 </template>
 
 <script>
-/**
- * TODO:
- * - Sort by A - Z , Filter by Name , Rank , Population ( use buttons that allow multi filter options )
- * TODO:
- * - Add cool animations to items that get filtered/sorted
- * TODO:
- * - Lazy load 50 at a time ? load more on scroll ....
-*/
-
 import { rangeSlider } from '../../mixins/rangeSlider.js'
 import PopulationFilter from './PopulationFilter'
 import CitySearch from './CitySearch'
+import IconArrowDown from '../icons/IconArrowDown'
 
 export default {
   mixins: [ rangeSlider ],
   components: {
     PopulationFilter,
-    CitySearch
+    CitySearch,
+    IconArrowDown
   },
   data () {
     return {
-      sliderValue: [0, 500]
+      sliderValue: [0, 500],
+      sortZtoA: false
+    }
+  },
+  computed: {
+    sortAZ () {
+      return this.sortZtoA ? 'A - Z' : 'Z - A'
+    }
+  },
+  methods: {
+    toggleAZSort () {
+      this.sortZtoA = !this.sortZtoA
+      this.$store.dispatch('citiesModule/sortByAtoZ', this.sortZtoA)
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-
+h3 {
+  margin-bottom: 1em;
+}
+.sort__a-z {
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+}
+.up {
+  transform: rotate(180deg)
+}
 </style>
