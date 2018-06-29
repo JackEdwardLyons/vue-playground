@@ -17,5 +17,8 @@ export const actions = {
   },
   sortByAtoZ ({ commit }, payload) {
     commit('SORT_CITIES_A_TO_Z', payload)
+  },
+  sortByRank ({ commit }, payload) {
+    commit('SORT_CITIES_BY_RANK', payload)
   }
 }

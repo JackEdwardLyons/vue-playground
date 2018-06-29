@@ -51,6 +51,12 @@ export default {
       this.sortZtoA = !this.sortZtoA
       this.$store.dispatch('citiesModule/sortByAtoZ', this.sortZtoA)
     }
+  },
+  watch: {
+    sliderValue (val) {
+      console.log(val)
+      this.$store.dispatch('citiesModule/sortByRank', val)
+    }
   }
 }
 </script>

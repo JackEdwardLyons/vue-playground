@@ -4,7 +4,8 @@ export const state = {
   filters: {
     byLetter: '',
     byPopulationSize: '',
-    sortByAtoZ: false
+    sortByAtoZ: false,
+    sortByRank: []
   },
   loadingComplete: false
 }

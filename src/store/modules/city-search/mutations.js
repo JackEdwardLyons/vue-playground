@@ -25,9 +25,18 @@ export const mutations = {
   },
 
   SORT_CITIES_A_TO_Z (state, payload) {
-    state.sortByAtoZ = payload
+    state.filters.sortByAtoZ = payload
     return (!payload)
       ? state.filteredCities.sort((a, b) => b.city.toLowerCase() < a.city.toLowerCase())
       : state.filteredCities.sort((a, b) => b.city.toLowerCase() > a.city.toLowerCase())
+  },
+
+  SORT_CITIES_BY_RANK (state, payload) {
+    state.filters.sortByRank = payload
+    let [ low, high ] = payload
+    const filter = state.cities.filter((city) => {
+      return city.rank >= low && city.rank <= high
+    })
+    state.filteredCities = filter
   }
 }
