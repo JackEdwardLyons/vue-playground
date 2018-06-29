@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     sortAZ () {
-      return this.sortZtoA ? 'A - Z' : 'Z - A'
+      return this.sortZtoA ? 'Z - A' : 'A - Z'
     }
   },
   methods: {
