@@ -5,7 +5,8 @@ export const state = {
     byLetter: '',
     byPopulationSize: '',
     sortByAtoZ: false,
-    sortByRank: []
+    sortByRank: [],
+    searchTerm: ''
   },
   loadingComplete: false
 }

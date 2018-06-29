@@ -38,5 +38,13 @@ export const mutations = {
       return city.rank >= low && city.rank <= high
     })
     state.filteredCities = filter
+  },
+
+  SORT_CITIES_BY_SEARCH_TERM (state, payload) {
+    state.filters.searchTerm = payload
+    const filter = state.cities.filter(city => {
+      return city.city.toLowerCase().includes(payload)
+    })
+    state.filteredCities = filter
   }
 }

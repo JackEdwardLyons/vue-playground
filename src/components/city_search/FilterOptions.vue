@@ -54,7 +54,6 @@ export default {
   },
   watch: {
     sliderValue (val) {
-      console.log(val)
       this.$store.dispatch('citiesModule/sortByRank', val)
     }
   }
