@@ -22,7 +22,6 @@ export const actions = {
     commit('SORT_CITIES_BY_RANK', payload)
   },
   sortBySearch ({ commit }, payload) {
-    console.log(payload)
     commit('SORT_CITIES_BY_SEARCH_TERM', payload)
   }
 }

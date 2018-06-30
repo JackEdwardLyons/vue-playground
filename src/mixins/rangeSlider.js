@@ -21,8 +21,8 @@ export const rangeSlider = {
           'marginLeft': 'auto',
           'marginRight': 'auto'
         },
-        lazy: true,
-        interval: 100
+        lazy: true
+        // interval: 1
       }
     }
   }
