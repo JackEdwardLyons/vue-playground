@@ -6,7 +6,8 @@ export const state = {
     byPopulationSize: '',
     sortByAtoZ: false,
     sortByRank: [],
-    searchTerm: ''
+    searchTerm: '',
+    executable: []
   },
   loadingComplete: false
 }

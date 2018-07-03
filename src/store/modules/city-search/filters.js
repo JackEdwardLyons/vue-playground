@@ -20,10 +20,8 @@ export const filters = {
       return city.rank >= low && city.rank <= high
     })
   },
-  filterCitiesByQuery (state, payload) {
-    return state.cities.filter(city => {
-      return city.city.toLowerCase().includes(payload)
-    })
+  filterCitiesByQuery (city, query) {
+    return city.city.toLowerCase().includes(query)
   }
 }
 

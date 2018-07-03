@@ -1,6 +1,13 @@
-import { make } from 'vuex-pathify'
-import { state } from './state'
-import { filters, sorters } from './filters'
+import {
+  make
+} from 'vuex-pathify'
+import {
+  state
+} from './state'
+import {
+  filters,
+  sorters
+} from './filters'
 
 // TODO: Create Filter Util Function to just call ONE main filter func.
 export const mutations = {
@@ -32,5 +39,27 @@ export const mutations = {
   SORT_CITIES_BY_SEARCH_TERM (state, payload) {
     state.filters.searchTerm = payload
     state.filteredCities = filters.filterCitiesByQuery(state, payload)
+  },
+
+  EXECUTE_SELECTED_FILTERS (state, payload) {
+    let filters = state.filters.executable
+    let queries = []
+
+    // add the queries
+    if (payload.type === 'query') {
+      queries.push(payload)
+    } else {
+      filters.push(payload)
+    }
+
+    // retain only the most recent query
+    filters.push(queries[0])
+
+    // reduce the dataset against each of the selected filters
+    let results = filters.reduce((cities, func) => {
+      return cities.filter(city => func.filter(city, func.value))
+    }, state.cities)
+
+    state.filteredCities = results
   }
 }

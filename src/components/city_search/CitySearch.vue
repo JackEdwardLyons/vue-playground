@@ -12,8 +12,13 @@ export default {
     }
   },
   watch: {
-    query (val) {
-      this.$store.dispatch('citiesModule/sortBySearch', val)
+    query (value) {
+      this.$store.dispatch('citiesModule/addFilterToExecutionList', {
+        type: 'query',
+        filter: 'filterCitiesByQuery',
+        value: value,
+        timestamp: new Date()
+      })
     }
   }
 }

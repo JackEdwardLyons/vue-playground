@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { filters } from './filters'
 
 export const actions = {
   loadCities ({ commit }) {
@@ -23,5 +24,13 @@ export const actions = {
   },
   sortBySearch ({ commit }, payload) {
     commit('SORT_CITIES_BY_SEARCH_TERM', payload)
+  },
+  addFilterToExecutionList ({ commit }, payload) {
+    commit('EXECUTE_SELECTED_FILTERS', {
+      type: payload.type,
+      filter: filters[payload.filter],
+      value: payload.value,
+      timestamp: payload.timestamp
+    })
   }
 }
