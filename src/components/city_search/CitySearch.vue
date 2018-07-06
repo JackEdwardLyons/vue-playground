@@ -17,7 +17,7 @@ export default {
         type: 'query',
         filter: 'filterCitiesByQuery',
         value: value,
-        timestamp: new Date()
+        timestamp: new Date().getTime()
       })
     }
   }
