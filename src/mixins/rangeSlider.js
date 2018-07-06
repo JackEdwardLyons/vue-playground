@@ -7,7 +7,7 @@ export const rangeSlider = {
   data () {
     return {
       options: {
-        width: '90%',
+        width: 'auto',
         dotSize: 20,
         min: 0,
         max: 1000,

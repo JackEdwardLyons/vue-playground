@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <select id="population-size">
-            <option
-                v-for="(population, index) in populationOptions"
-                :key="index"
-                @click="filterByPopulation(population.size)">
-                {{ numberWithCommas(population.size) }}
-            </option>
-        </select>
-    </div>
+  <div>
+    <ul class="population-size-list">
+      <li class="population-size-list--item" 
+          v-for="(population, index) in populationOptions"
+          :key="index">
+        {{ numberWithCommas(population.size) }}
+      </li>
+    </ul>
+  </div>    
 </template>
 
 <script>
@@ -37,4 +36,24 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.population-size-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  &--item {
+    cursor: pointer;
+    font-size: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 5px;
+    margin: 5px;
+    transition: .3s ease;
+    &:hover {
+      background: #3498db;
+      color: #fff;
+    }
+  }
+}
+
 </style>

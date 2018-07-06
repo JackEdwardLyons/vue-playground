@@ -8,13 +8,25 @@
  }
 // flexbox styles
 .flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    .col {
-        // min-width: 400px;
-        flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .col {
+    flex: 1;
+    &.sm {
+      max-width: 150px;
     }
+    &.md {
+      max-width: 250px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .flex .col {
+    min-width: 100%;
+  }
 }
 
 // main styles

@@ -8,11 +8,11 @@
           <h3>Population</h3>
           <PopulationFilter />
         </div>
-        <div class="col">
+        <div class="col md">
           <h3>Name</h3>
           <CitySearch />
         </div>
-        <div class="col">
+        <div class="col sm">
           <h3>Sort</h3>
           <span class="sort__a-z" @click="toggleAZSort">
             {{ sortAZ }}
